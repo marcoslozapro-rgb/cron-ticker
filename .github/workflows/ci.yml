@@ -17,7 +17,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # Variables a nivel del job
     env:
       BUILD_DIR: dist
 
@@ -27,7 +26,6 @@ jobs:
       - name: Show Variables
         run: echo "App: ${{ env.APP_NAME }}, Node: ${{ env.NODE_VERSION }}"
 
-      # Variables a nivel del step
       - name: Build
         run: npm run build
         env:
