@@ -16,7 +16,7 @@ jobs:
 
   test:
     name: Tests
-    runs-on: ubuntu-lates
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -25,18 +25,17 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
+
       - run: npm ci
 
       - name: Run tests with coverage
         run: npm run test:coverage
 
       - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        if: always()
 
-        uses: actions/upload-artifact/@v4
-
-        if: allways()
-        
         with:
-          name: coverage-{{github.sha}}
-          patch: coverage/
+          name: coverage-${{ github.sha }}
+          path: coverage/
           retention-days: 7
