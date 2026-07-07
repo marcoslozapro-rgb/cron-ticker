@@ -26,6 +26,9 @@ jobs:
       - name: Show Variables
         run: |
           echo "App: ${{ env.APP_NAME }}, Node: ${{ env.NODE_VERSION }}"
+      - name: Deploy API
+  run: |
+    echo "Deploying with key ${{ secrets.API_KEY }}"
 
       - name: Build
         run: npm run build
